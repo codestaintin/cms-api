@@ -5,7 +5,8 @@ import { NewCreatedUser } from './user.interface';
 const createUserBody: Record<keyof NewCreatedUser, any> = {
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
-    name: Joi.string().required(),
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required()
 };
 
 export const createUser = {

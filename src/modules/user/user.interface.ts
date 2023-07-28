@@ -3,7 +3,8 @@ import { QueryResult } from '../paginate/paginate';
 import { AccessAndRefreshTokens } from '../token/token.interfaces';
 
 export interface IUser {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
 }
@@ -18,7 +19,6 @@ export interface IUserModel extends Model<IUserDoc> {
 }
 
 export type UpdateUserBody = Partial<IUser>;
-export type NewRegisteredUser = IUser;
 export type NewCreatedUser = IUser;
 
 export interface IUserWithTokens {
