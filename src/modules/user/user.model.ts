@@ -6,7 +6,12 @@ import paginate from '../paginate/paginate';
 
 const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
     {
-        name: {
+        firstName: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        lastName: {
             type: String,
             required: true,
             trim: true
