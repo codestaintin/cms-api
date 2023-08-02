@@ -6,8 +6,9 @@ const createUserBody: Record<keyof NewCreatedUser, any> = {
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
     firstName: Joi.string().required(),
-    lastName: Joi.string().required()
-};
+    lastName: Joi.string().required(),
+    role: Joi.string().valid('user', 'admin'),
+  };
 
 export const createUser = {
     body: Joi.object().keys(createUserBody),
@@ -15,7 +16,9 @@ export const createUser = {
 
 export const getUsers = {
     query: Joi.object().keys({
-        name: Joi.string(),
+        firstName: Joi.string(),
+        lastName: Joi.string(),
+        role: Joi.string(),
         sortBy: Joi.string(),
         projectBy: Joi.string(),
         limit: Joi.number().integer(),

@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import { IUserDoc, IUserModel } from './user.interface';
 import paginate from '../paginate/paginate';
+import { roles } from '../../config/roles';
 
 const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
     {
@@ -27,6 +28,11 @@ const userSchema = new mongoose.Schema<IUserDoc, IUserModel>(
                     throw new Error('Invalid email')
                 }
             },
+        },
+        role: {
+            type: String,
+            enum: roles,
+            default: 'user',
         },
         password: {
             type: String,

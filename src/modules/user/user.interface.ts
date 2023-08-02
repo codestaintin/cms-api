@@ -7,6 +7,7 @@ export interface IUser {
     lastName: string;
     email: string;
     password: string;
+    role: string;
 }
 
 export interface IUserDoc extends IUser, Document {
@@ -20,6 +21,7 @@ export interface IUserModel extends Model<IUserDoc> {
 
 export type UpdateUserBody = Partial<IUser>;
 export type NewCreatedUser = IUser;
+export type NewRegisteredUser = Omit<IUser, 'role'>;
 
 export interface IUserWithTokens {
     user: IUserDoc;
