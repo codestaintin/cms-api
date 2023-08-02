@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import { auth } from '../../modules/auth';
 import { userController, userValidation } from '../../modules/user';
 import { validate }  from '../../modules/validate';
 
@@ -11,11 +12,10 @@ router
 
 router
     .route('/:userId')
-    .get(validate(userValidation.getUser), userController.getUser)
+    .get(auth('getUsers'),validate(userValidation.getUser), userController.getUser)
     .patch(validate(userValidation.updateUser), userController.updateUser)
     .delete(validate(userValidation.deleteUser), userController.deleteUser);
 
 
-//router.route('/hello').get(userController.welcome);
 
 export default router;
