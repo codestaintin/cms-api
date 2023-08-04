@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import userRoute from './user.route';
 import authRoute from './auth.route';
+import organizationRoute from './organization.route';
 
 
 const router = express.Router();
@@ -18,6 +19,10 @@ const defaultRoute: IRoute[] = [
     {
         path: '/auth',
         route: authRoute
+    },
+    {
+        path: '/organization',
+        route: organizationRoute
     }
 ];
 
