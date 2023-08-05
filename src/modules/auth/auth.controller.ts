@@ -4,6 +4,7 @@ import { catchAsync } from "../utils";
 import { tokenService } from '../token';
 import { userService } from '../user';
 import * as authService from './auth.service';
+import mongoose from 'mongoose';
 
 export const register = catchAsync(async (req: Request, res: Response) => {
     const user = await userService.registerUser(req.body);
@@ -26,4 +27,18 @@ export const logout = catchAsync(async (req: Request, res: Response) => {
 export const refreshTokens = catchAsync(async (req: Request, res: Response) => {
     const userWithTokens = await authService.refreshAuth(req.body.refreshToken);
     res.send({ ...userWithTokens });
+});
+
+export const grantAdminAccess = catchAsync(async (req: Request, res: Response) => {
+    if (typeof req.params['userId'] === 'string') {
+        const user = await authService.grantAdminAccess(new mongoose.Types.ObjectId(req.params['userId']));
+        res.status(httpStatus.OK).send(user);
+    }
+});
+
+export const revokeAdminAccess = catchAsync(async (req: Request, res: Response) => {
+    if (typeof req.params['userId'] === 'string') {
+        const user = await authService.revokeAdminAccess(new mongoose.Types.ObjectId(req.params['userId']));
+        res.status(httpStatus.OK).send(user);
+    }
 });

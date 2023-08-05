@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import Token from '../token/token.model';
 import ApiError from '../errors/ApiError';
 import tokenTypes from '../token/token.types';
-import { getUserByEmail, getUserById, updateUserById } from '../user/user.service';
-import { IUserDoc, IUserWithTokens } from '../user/user.interface';
+import { getUserByEmail, getUserById } from '../user/user.service';
+import {IUserDoc, IUserWithTokens, UpdateUserBody} from '../user/user.interface';
 import { generateAuthTokens, verifyToken } from '../token/token.service';
 
 
@@ -37,5 +37,31 @@ export const refreshAuth = async (refreshToken: string): Promise<IUserWithTokens
     } catch (error) {
         throw new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate');
     }
+};
+
+export const grantAdminAccess = async (
+    userId: mongoose.Types.ObjectId
+): Promise<IUserDoc | null> => {
+    const user = await getUserById(userId);
+    if (!user) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    }
+    user['role'] = 'admin';
+
+    await user.save();
+    return user;
+};
+
+export const revokeAdminAccess = async (
+    userId: mongoose.Types.ObjectId
+): Promise<IUserDoc | null> => {
+    const user = await getUserById(userId);
+    if (!user) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    }
+    user['role'] = 'user';
+
+    await user.save();
+    return user;
 };
 
