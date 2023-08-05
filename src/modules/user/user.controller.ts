@@ -31,7 +31,7 @@ export const getUser = catchAsync(async (req: Request, res: Response) => {
 export const updateUser = catchAsync(async (req: Request, res: Response) => {
     if (typeof req.params['userId'] === 'string') {
         const user = await userService.updateUserById(new mongoose.Types.ObjectId(req.params['userId']), req.body);
-        res.send(user);
+        res.status(httpStatus.OK).send(user);
     }
 });
 
