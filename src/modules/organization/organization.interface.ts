@@ -5,7 +5,7 @@ export interface IOrganization {
     name: string;
     logo?: string;
     banner?: string;
-    createdBy: string;
+    createdBy: any;
 }
 
 export interface IOrganizationDoc extends IOrganization, Document{}

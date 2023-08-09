@@ -11,7 +11,7 @@ const verifyCallback =
     if (err || info || !user) {
       return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate'));
     }
-    req.user = user;
+    req.user = user.id;
 
     if (requiredRights.length) {
       const userRights = roleRights.get(user.role);
@@ -21,7 +21,6 @@ const verifyCallback =
         return reject(new ApiError(httpStatus.FORBIDDEN, 'Forbidden'));
       }
     }
-
     resolve();
   };
 

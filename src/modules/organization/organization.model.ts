@@ -18,10 +18,9 @@ const organizationSchema = new mongoose.Schema<IOrganizationDoc, IOrganizationMo
             trim: true,
         },
         createdBy: {
-           type: String,
-            ref: 'User',
             required: true,
-            trim: true
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
         }
     }
 );

@@ -1,13 +1,19 @@
 import httpStatus from 'http-status';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
 import * as organizationService from './organization.service';
 import ApiError from '../errors/ApiError';
 import { IOptions } from '../paginate/paginate';
 import catchAsync from '../utils/catchAsync';
 import pick from '../utils/pick';
 export const createOrganization = catchAsync(async (req: Request, res: Response) => {
-    const organization = await organizationService.createOrganization(req.body);
+    const organization = await organizationService.createOrganization({
+        name: req.body.name,
+        logo: req.body.logo,
+        banner: req.body.banner,
+        createdBy: req.user
+    });
     res.status(httpStatus.CREATED).send(organization);
 });
 
@@ -24,7 +30,10 @@ export const getOrganization = catchAsync(async (req: Request, res: Response) =>
         if (!organization) {
             throw new ApiError(httpStatus.NOT_FOUND, 'Organization not found');
         }
-        res.send(organization);
+        const populateUser = await organization.populate({
+            path:'createdBy', select: 'firstName lastName'
+        });
+        res.send(populateUser);
     }
 });
 
