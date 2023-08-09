@@ -8,8 +8,6 @@ import ApiError from '../errors/ApiError';
 import tokenTypes from './token.types';
 import { AccessAndRefreshTokens, ITokenDoc } from './token.interfaces';
 import { IUserDoc } from '../user/user.interface';
-import { userService } from '../user';
-
 
 export const generateToken = (
     userId: mongoose.Types.ObjectId,
