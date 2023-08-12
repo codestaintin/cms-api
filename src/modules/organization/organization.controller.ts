@@ -1,7 +1,6 @@
 import httpStatus from 'http-status';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
 import * as organizationService from './organization.service';
 import ApiError from '../errors/ApiError';
 import { IOptions } from '../paginate/paginate';
