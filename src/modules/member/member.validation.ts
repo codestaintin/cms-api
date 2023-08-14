@@ -23,7 +23,7 @@ const memberBody = {
 const createMemberBody: Record<keyof IMember, any> = {
     title: Joi.string(),
     address: Joi.string().required(),
-    branchId: Joi.string().required().custom(objectId),
+    branchId: Joi.string().custom(objectId),
     dob: Joi.date().required(),
     firstName: Joi.string().required(),
     gender: Joi.string().required()

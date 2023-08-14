@@ -6,7 +6,7 @@ import { branchValidation, branchController } from '../../modules/branch';
 const router: Router = express.Router();
 
 router
-    .route('/:organizationId/')
+    .route('/:organizationId')
     .post(auth('manageBranches'), validate(branchValidation.createBranch), branchController.createBranch);
 
 router

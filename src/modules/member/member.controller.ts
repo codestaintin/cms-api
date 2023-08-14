@@ -2,13 +2,32 @@ import httpStatus from 'http-status';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import * as memberService from './member.service';
+import { getBranchById } from '../branch/branch.service';
 import ApiError from '../errors/ApiError';
 import { IOptions, QueryResult } from '../paginate/paginate';
 import catchAsync from '../utils/catchAsync';
 import pick from '../utils/pick';
 
 export const createMember = catchAsync(async (req: Request, res: Response) => {
-    const member = await memberService.createMember(req.body);
+    const branch = await getBranchById(new mongoose.Types.ObjectId(req.params['branchId']));
+    if (!branch) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Branch not found');
+    }
+    const member = await memberService.createMember({
+        title: req.body.title,
+        firstName: req.body.firstName,
+        middleName: req.body.middleName,
+        lastName: req.body.lastName,
+        gender: req.body.gender,
+        dob: req.body.dob,
+        address: req.body.address,
+        occupation: req.body.occupation,
+        status: req.body.status,
+        mobile: req.body.mobile,
+        email: req.body.email,
+        branchId: branch,
+        maritalStatus: req.body.maritalStatus
+    });
     res.status(httpStatus.CREATED).send(member);
 });
 

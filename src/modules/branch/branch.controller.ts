@@ -10,6 +10,9 @@ import pick from '../utils/pick';
 
 export const createBranch = catchAsync(async (req: Request, res: Response) => {
     const organizationId = await getOrganizationById(new mongoose.Types.ObjectId(req.params['organizationId']));
+    if (!organizationId) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Organization not found');
+    }
     const branch = await branchService.createBranch({
         name: req.body.name,
         address: req.body.address,
