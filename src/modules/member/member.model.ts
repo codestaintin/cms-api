@@ -74,7 +74,7 @@ const memberSchema = new mongoose.Schema<IMemberDoc, IMemberModel>(
         branchId: {
             required: true,
             type: mongoose.Types.ObjectId,
-            ref: 'Organization'
+            ref: 'Branch'
         }
     }
 );

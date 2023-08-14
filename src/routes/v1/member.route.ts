@@ -5,9 +5,12 @@ import { memberValidation, memberController } from '../../modules/member';
 const router: Router = express.Router();
 
 router
-    .route('/')
-    .get(validate(memberValidation.getMembers), memberController.getMembers)
+    .route('/:branchId')
     .post(validate(memberValidation), memberController.createMember);
+
+router
+    .route('/')
+    .get(validate(memberValidation.getMembers), memberController.getMembers);
 
 router
     .route('/:memberId')
