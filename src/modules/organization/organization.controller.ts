@@ -6,6 +6,7 @@ import ApiError from '../errors/ApiError';
 import { IOptions } from '../paginate/paginate';
 import catchAsync from '../utils/catchAsync';
 import pick from '../utils/pick';
+
 export const createOrganization = catchAsync(async (req: Request, res: Response) => {
     const organization = await organizationService.createOrganization({
         name: req.body.name,
