@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import * as memberService from './member.service';
 import ApiError from '../errors/ApiError';
-import {IOptions, QueryResult} from '../paginate/paginate';
+import { IOptions, QueryResult } from '../paginate/paginate';
 import catchAsync from '../utils/catchAsync';
 import pick from '../utils/pick';
 
@@ -31,7 +31,6 @@ export const getMember = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const updateMember = catchAsync(async (req: Request, res: Response) => {
-    console.log(req.body);
     if (typeof req.params['memberId'] === 'string') {
         const member = await memberService
             .updateMemberById(new mongoose.Types.ObjectId(req.params['memberId']), req.body);

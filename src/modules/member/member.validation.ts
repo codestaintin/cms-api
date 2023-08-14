@@ -5,7 +5,7 @@ import { IMember, maritalStatus } from './member.interface';
 const memberBody = {
     title: Joi.string(),
     address: Joi.string(),
-    branchId: Joi.string(),
+    branchId: Joi.string().custom(objectId),
     dob: Joi.date(),
     firstName: Joi.string(),
     gender: Joi.string()
