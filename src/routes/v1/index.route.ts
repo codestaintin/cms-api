@@ -4,6 +4,7 @@ import authRoute from './auth.route';
 import organizationRoute from './organization.route';
 import memberRoute from './member.route';
 import branchRoute from './branch.route';
+import groupRoute from './group.route';
 
 
 const router = express.Router();
@@ -33,6 +34,10 @@ const defaultRoute: IRoute[] = [
     {
         path: '/branch',
         route: branchRoute
+    },
+    {
+        path: '/group',
+        route: groupRoute
     }
 ];
 
