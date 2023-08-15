@@ -8,12 +8,12 @@ import { IMember, IMemberDoc, UpdatedMemberBody } from './member.interface';
 export const createMember = async (memberBody: IMember): Promise<IMemberDoc> => {
     const member = await Member.create(memberBody);
     return member;
-}
+};
 
 export const queryMembers = async (filter: Record<string, any>, options: IOptions): Promise<QueryResult> => {
     const member = await Member.paginate(filter, options);
     return member;
-}
+};
 
 export const getMemberById = async (id: mongoose.Types.ObjectId) : Promise<IMemberDoc |  null> => Member.findById(id);
 
@@ -27,8 +27,8 @@ export const updateMemberById = async (
     }
     Object.assign(member, updateBody);
     await member.save();
-    return member
-}
+    return member;
+};
 
 export const deleteMemberById = async (id: mongoose.Types.ObjectId): Promise<IMemberDoc | null> => {
     const member = await getMemberById(id);
@@ -37,4 +37,4 @@ export const deleteMemberById = async (id: mongoose.Types.ObjectId): Promise<IMe
     }
     await member.deleteOne();
     return member;
-}
+};
