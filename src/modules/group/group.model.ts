@@ -19,6 +19,11 @@ const groupSchema = new mongoose.Schema<IGroupDoc, IGroupModel>(
             required: true,
             trim: true
         }],
+        members: [{
+            type: mongoose.Types.ObjectId,
+            required: true,
+            ref: 'Member'
+        }],
         branchId: {
             type: mongoose.Types.ObjectId,
             required: true,

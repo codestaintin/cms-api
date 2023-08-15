@@ -16,6 +16,7 @@ const memberBody = {
     middleName: Joi.string(),
     mobile: Joi.string(),
     occupation: Joi.string(),
+    role: Joi.array(),
     status: Joi.string(),
     email: Joi.string().email()
 }
@@ -34,6 +35,7 @@ const createMemberBody: Record<keyof IMember, any> = {
     middleName: Joi.string().required(),
     mobile: Joi.string().required(),
     occupation: Joi.string().required(),
+    role: Joi.array(),
     status: Joi.string().required(),
     email: Joi.string().email()
 };

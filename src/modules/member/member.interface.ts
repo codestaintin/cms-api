@@ -18,13 +18,13 @@ export interface IMember {
     dob: Date,
     address: string,
     occupation: string,
+    role?: string[],
     status: string,
     mobile: string,
     email?: string,
     branchId: any,
     maritalStatus: maritalStatus
 }
-
 export interface IMemberDoc extends IMember, Document{}
 
 export type UpdatedMemberBody = Partial<IMember>;

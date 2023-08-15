@@ -7,7 +7,6 @@ import ApiError from '../errors/ApiError';
 import { IOptions, QueryResult } from '../paginate/paginate';
 import catchAsync from '../utils/catchAsync';
 import pick from '../utils/pick';
-import {deleteGroupById} from './group.service';
 
 export const createGroup = catchAsync(async (req: Request, res: Response) => {
     const branch = await getBranchById(new mongoose.Types.ObjectId(req.params['branchId']));
@@ -18,6 +17,7 @@ export const createGroup = catchAsync(async (req: Request, res: Response) => {
         name: req.body.name,
         description: req.body.description,
         roles: req.body.roles,
+        members: req.body.members,
         branchId: branch
     });
     res.status(httpStatus.CREATED).send(group);
@@ -36,7 +36,10 @@ export const getGroup = catchAsync(async (req: Request, res: Response) => {
         if (!group) {
             throw new ApiError(httpStatus.NOT_FOUND, 'Group not found');
         }
-        res.send(group);
+        const populateMember = await group.populate({
+            path: 'members', select: 'title firstName middleName lastName'
+        });
+        res.send(populateMember);
     }
 });
 
