@@ -6,6 +6,7 @@ const createGroupBody: Record<keyof IGroup, any> = {
     name: Joi.string().required(),
     description: Joi.string().required(),
     roles: Joi.array().required(),
+    members: Joi.array().required(),
     branchId: Joi.string().custom(objectId)
 };
 
@@ -18,6 +19,7 @@ export const getGroups = {
         name: Joi.string(),
         description: Joi.string(),
         roles: Joi.array(),
+        members: Joi.array(),
         branchId: Joi.string().custom(objectId),
         sortBy: Joi.string(),
         projectBy: Joi.string(),
@@ -40,6 +42,7 @@ export const updateGroup = {
         name: Joi.string(),
         description: Joi.string(),
         roles: Joi.array(),
+        members: Joi.array(),
         branchId: Joi.string().custom(objectId)
     }).min(1),
 };

@@ -44,6 +44,10 @@ const memberSchema = new mongoose.Schema<IMemberDoc, IMemberModel>(
             trim: true,
             required: true
         },
+        role: [{
+          type: String,
+          trim: true
+        }],
         status: {
             type: String,
             trim: true,

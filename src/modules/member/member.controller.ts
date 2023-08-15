@@ -22,6 +22,7 @@ export const createMember = catchAsync(async (req: Request, res: Response) => {
         dob: req.body.dob,
         address: req.body.address,
         occupation: req.body.occupation,
+        role: req.body.role,
         status: req.body.status,
         mobile: req.body.mobile,
         email: req.body.email,

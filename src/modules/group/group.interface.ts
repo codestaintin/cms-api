@@ -5,6 +5,7 @@ export interface IGroup {
     name: string,
     description: string,
     roles: string[],
+    members: string[],
     branchId: any
 }
 
