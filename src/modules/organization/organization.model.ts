@@ -25,7 +25,7 @@ const organizationSchema = new mongoose.Schema<IOrganizationDoc, IOrganizationMo
     }
 );
 
-organizationSchema.plugin(paginate);
+organizationSchema.plugin(paginate)
 
 organizationSchema.method('isNameMatch', async function(name: string): Promise<boolean>{
     return true;
