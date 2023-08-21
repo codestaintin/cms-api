@@ -5,8 +5,8 @@ import ApiError from '../errors/ApiError';
 import { IRevenueType, IRevenueTypeDoc, UpdateRevenueTypeBody } from './revenue_type.interface';
 import { IOptions, QueryResult } from '../paginate/paginate';
 
-export const createRevenueType = async (meetingTypeBody: IRevenueType): Promise<IRevenueTypeDoc> => {
-    const revenueType = await RevenueType.create(meetingTypeBody);
+export const createRevenueType = async (revenueTypeBody: IRevenueType): Promise<IRevenueTypeDoc> => {
+    const revenueType = await RevenueType.create(revenueTypeBody);
     return revenueType;
 };
 
