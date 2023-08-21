@@ -11,6 +11,7 @@ const meetingSchema = new mongoose.Schema<IMeetingDoc, IMeetingModel>(
         },
         date: {
             type: Date,
+            required: true,
             default: Date.now
         },
         attendance: {
