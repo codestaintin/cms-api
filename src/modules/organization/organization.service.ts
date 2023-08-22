@@ -28,7 +28,7 @@ export const updateOrganizationById = async (
     Object.assign(organization, updateBody);
     await organization.save();
     return organization;
-}
+};
 
 export const deleteOrganizatioById = async (id: mongoose.Types.ObjectId): Promise<IOrganizationDoc | null> => {
     const organization = await getOrganizationById(id);
@@ -37,4 +37,4 @@ export const deleteOrganizatioById = async (id: mongoose.Types.ObjectId): Promis
     }
     await organization.deleteOne();
     return organization;
-}
+};

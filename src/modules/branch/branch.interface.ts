@@ -16,4 +16,4 @@ export type UpdateBranchBody = Partial<IBranch>;
 
 export interface IBranchModel extends Model<IBranch> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>
-}
+};

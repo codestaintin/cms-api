@@ -49,5 +49,4 @@ export const deleteUserById = async (userId: mongoose.Types.ObjectId): Promise<I
     }
     await user.deleteOne();
     return user;
-}
-
+};

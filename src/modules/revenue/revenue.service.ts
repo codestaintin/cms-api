@@ -36,4 +36,4 @@ export const deleteRevenueById = async (id: mongoose.Types.ObjectId): Promise<IR
     }
     await revenue.deleteOne();
     return revenue;
-}
+};

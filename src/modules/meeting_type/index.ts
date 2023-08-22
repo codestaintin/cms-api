@@ -4,4 +4,4 @@ import * as meetingTypeService from './meeting_type.service';
 import * as meetingTypeController from './meeting_type.controller';
 import * as meetingTypeValidation from './meeting_type.validation';
 
-export { meetingTypeInterface, MeetingType, meetingTypeService, meetingTypeController, meetingTypeValidation }
+export { meetingTypeInterface, MeetingType, meetingTypeService, meetingTypeController, meetingTypeValidation };

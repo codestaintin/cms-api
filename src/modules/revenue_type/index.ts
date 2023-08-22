@@ -4,4 +4,4 @@ import * as revenueTypeService from './revenue_type.service';
 import * as revenueTypeController from './revenue_type.controller';
 import * as revenueTypeValidation from './revenue_type.validation';
 
-export { revenueTypeInterface, RevenueType, revenueTypeService, revenueTypeController, revenueTypeValidation }
+export { revenueTypeInterface, RevenueType, revenueTypeService, revenueTypeController, revenueTypeValidation };

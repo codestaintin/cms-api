@@ -41,4 +41,3 @@ export const deleteUser = catchAsync(async (req: Request, res: Response) => {
         res.status(httpStatus.NO_CONTENT).send();
     }
 });
-

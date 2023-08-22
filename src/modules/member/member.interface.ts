@@ -30,4 +30,4 @@ export interface IMemberDoc extends IMember, Document{}
 export type UpdatedMemberBody = Partial<IMember>;
 export interface IMemberModel extends Model<IMember> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>;
-}
+};

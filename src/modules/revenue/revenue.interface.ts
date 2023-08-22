@@ -12,9 +12,7 @@ export interface IRevenue {
 
 export interface IRevenueDoc extends IRevenue, Document{}
 
+export type UpdateRevenueBody = Partial<IRevenue>
 export interface IRevenueModel extends Model<IRevenueDoc> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>
-}
-
-export type UpdateRevenueBody = Partial<IRevenue>
-
+};

@@ -7,8 +7,8 @@ export interface IMeetingType {
 
 export interface IMeetingTypeDoc extends IMeetingType, Document {}
 
+export type UpdateMeetingTypeBody = Partial<IMeetingType>
+
 export interface IMeetingTypeModel extends Model<IMeetingTypeDoc> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>;
-}
-
-export type UpdateMeetingTypeBody = Partial<IMeetingType>
+};
