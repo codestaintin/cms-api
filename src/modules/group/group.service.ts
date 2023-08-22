@@ -38,4 +38,3 @@ export const deleteGroupById = async (id: mongoose.Types.ObjectId): Promise<IGro
     await group.deleteOne();
     return group;
 };
-

@@ -37,4 +37,4 @@ export const deleteMeetingById = async (id: mongoose.Types.ObjectId): Promise<IM
     }
     await meeting.deleteOne();
     return meeting;
-}
+};

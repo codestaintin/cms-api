@@ -7,7 +7,6 @@ import { getUserByEmail, getUserById } from '../user/user.service';
 import {IUserDoc, IUserWithTokens, UpdateUserBody} from '../user/user.interface';
 import { generateAuthTokens, verifyToken } from '../token/token.service';
 
-
 export const loginUserWithEmailAndPassword = async (email: string, password: string): Promise<IUserDoc> => {
     const user = await getUserByEmail(email);
     if (!user || !(await user.isPasswordMatch(password))) {
@@ -47,7 +46,6 @@ export const grantAdminAccess = async (
         throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
     }
     user['role'] = 'admin';
-
     await user.save();
     return user;
 };
@@ -60,8 +58,6 @@ export const revokeAdminAccess = async (
         throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
     }
     user['role'] = 'user';
-
     await user.save();
     return user;
 };
-

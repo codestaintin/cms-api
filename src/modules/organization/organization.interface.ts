@@ -14,4 +14,4 @@ export type UpdatedOrganizationBody = Partial<IOrganization>;
 
 export interface IOrganizationModel extends Model<IOrganizationDoc> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>;
-}
+};

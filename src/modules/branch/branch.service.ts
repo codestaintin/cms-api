@@ -8,12 +8,12 @@ import { IBranch, IBranchDoc, UpdateBranchBody } from './branch.interface';
 export const createBranch = async (branchBody: IBranch): Promise<IBranchDoc> => {
     const branch = await Branch.create(branchBody);
     return branch
-}
+};
 
 export const queryMembers = async (filter: Record<string, any>, options: IOptions): Promise<QueryResult> => {
     const branch = await Branch.paginate(filter, options);
     return branch;
-}
+};
 
 export const getBranchById = async (id: mongoose.Types.ObjectId) : Promise<IBranchDoc |  null> => Branch.findById(id);
 
@@ -28,7 +28,7 @@ export const updateMemberById = async (
     Object.assign(branch, updateBody);
     await branch.save();
     return branch
-}
+};
 
 export const deleteBranchById = async (id: mongoose.Types.ObjectId): Promise<IBranchDoc | null> => {
     const branch = await getBranchById(id);
@@ -37,4 +37,4 @@ export const deleteBranchById = async (id: mongoose.Types.ObjectId): Promise<IBr
     }
     await branch.deleteOne();
     return branch;
-}
+};

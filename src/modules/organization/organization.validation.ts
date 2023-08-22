@@ -48,4 +48,3 @@ export const deleteOrganization = {
         organizationId: Joi.string().custom(objectId)
     })
 };
-

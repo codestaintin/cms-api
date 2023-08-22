@@ -17,4 +17,4 @@ export type UpdateMeetingBody = Partial<IMeeting>;
 
 export interface IMeetingModel extends Model<IMeeting> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>;
-}
+};

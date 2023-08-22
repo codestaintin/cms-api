@@ -16,4 +16,4 @@ export type UpdateExpensesBody = Partial<IExpenses>;
 
 export interface IExpensesModel extends Model<IExpenses> {
     paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>;
-}
+};

@@ -52,4 +52,4 @@ export const deleteMeeting = {
     params: Joi.object().keys({
         meetingId: Joi.string().custom(objectId)
     })
-}
+};
