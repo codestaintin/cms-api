@@ -4,7 +4,7 @@ import Token from '../token/token.model';
 import ApiError from '../errors/ApiError';
 import tokenTypes from '../token/token.types';
 import { getUserByEmail, getUserById } from '../user/user.service';
-import {IUserDoc, IUserWithTokens, UpdateUserBody} from '../user/user.interface';
+import { IUserDoc, IUserWithTokens } from '../user/user.interface';
 import { generateAuthTokens, verifyToken } from '../token/token.service';
 
 export const loginUserWithEmailAndPassword = async (email: string, password: string): Promise<IUserDoc> => {
